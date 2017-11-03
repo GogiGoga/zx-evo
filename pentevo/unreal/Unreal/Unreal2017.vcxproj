@@ -67,7 +67,6 @@
     <ClCompile Include="font8.cpp" />
     <ClCompile Include="fontatm2.cpp" />
     <ClCompile Include="fontdata.cpp" />
-    <ClCompile Include="ft812.cpp" />
     <ClCompile Include="getopt.cpp" />
     <ClCompile Include="gs.cpp" />
     <ClCompile Include="gshlbass.cpp" />
@@ -195,15 +194,6 @@
     <ClInclude Include="font8.h" />
     <ClInclude Include="fontatm2.h" />
     <ClInclude Include="fontdata.h" />
-    <ClInclude Include="ft812.h" />
-    <ClInclude Include="ft8xx\FT_CoPro_Cmds.h" />
-    <ClInclude Include="ft8xx\FT_DataTypes.h" />
-    <ClInclude Include="ft8xx\FT_Emulator.h" />
-    <ClInclude Include="ft8xx\FT_EmulatorMain.h" />
-    <ClInclude Include="ft8xx\FT_Gpu.h" />
-    <ClInclude Include="ft8xx\FT_Gpu_Hal.h" />
-    <ClInclude Include="ft8xx\FT_Hal_Utils.h" />
-    <ClInclude Include="ft8xx\FT_Platform.h" />
     <ClInclude Include="funcs.h" />
     <ClInclude Include="getopt.h" />
     <ClInclude Include="gs.h" />

@@ -16,9 +16,6 @@
     <Filter Include="Headers\sound">
       <UniqueIdentifier>{eb0e5da6-3e7b-465f-9c25-986a749167a7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sources\ft8xx">
-      <UniqueIdentifier>{d427986d-9761-4968-a8cc-f48848aa251a}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\main.ico">
@@ -349,9 +346,6 @@
     <ClCompile Include="zf232.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
-    <ClCompile Include="ft812.cpp">
-      <Filter>Sources</Filter>
-    </ClCompile>
     <ClCompile Include="sound\ayx32.cpp">
       <Filter>Sources\sound</Filter>
     </ClCompile>
@@ -638,33 +632,6 @@
     </ClInclude>
     <ClInclude Include="zf232.h">
       <Filter>Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="ft812.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="ft8xx\FT_CoPro_Cmds.h">
-      <Filter>Sources\ft8xx</Filter>
-    </ClInclude>
-    <ClInclude Include="ft8xx\FT_DataTypes.h">
-      <Filter>Sources\ft8xx</Filter>
-    </ClInclude>
-    <ClInclude Include="ft8xx\FT_Emulator.h">
-      <Filter>Sources\ft8xx</Filter>
-    </ClInclude>
-    <ClInclude Include="ft8xx\FT_EmulatorMain.h">
-      <Filter>Sources\ft8xx</Filter>
-    </ClInclude>
-    <ClInclude Include="ft8xx\FT_Gpu.h">
-      <Filter>Sources\ft8xx</Filter>
-    </ClInclude>
-    <ClInclude Include="ft8xx\FT_Gpu_Hal.h">
-      <Filter>Sources\ft8xx</Filter>
-    </ClInclude>
-    <ClInclude Include="ft8xx\FT_Hal_Utils.h">
-      <Filter>Sources\ft8xx</Filter>
-    </ClInclude>
-    <ClInclude Include="ft8xx\FT_Platform.h">
-      <Filter>Sources\ft8xx</Filter>
     </ClInclude>
     <ClInclude Include="sound\ayx32.h">
       <Filter>Headers\sound</Filter>

@@ -5,7 +5,6 @@
 #include "vars.h"
 #include "sdcard.h"
 #include "zc.h"
-#include "ft812.h"
 
 void TZc::Reset()
 {
@@ -21,9 +20,6 @@ void TZc::Wr(u32 Port, u8 Val)
   {
     case 0x77: // config
       Val &= 7;
-    
-      if ((comp.ts.vdac2) && ((Cfg & 4) != (Val & 4)))
-        vdac2::set_ss((Val & 4) != 0);
       
       Cfg = Val;
     break;
@@ -34,8 +30,6 @@ void TZc::Wr(u32 Port, u8 Val)
         RdBuff = SdCard.Rd();
         SdCard.Wr(Val);
       }
-      else if ((Cfg & 4) && (comp.ts.vdac2))   // FT812 selected
-        RdBuff = vdac2::transfer(Val);
       else
         RdBuff = 255;
       //printf("\nOUT %02X  in %02X",Val,RdBuff);
@@ -58,8 +52,6 @@ u8 TZc::Rd(u32 Port)
         RdBuff = SdCard.Rd();
         SdCard.Wr(0xff);
       }
-      else if ((Cfg & 4) && (comp.ts.vdac2))   // FT812 selected
-        RdBuff = vdac2::transfer(0xFF);
       else
         RdBuff = 255;
       

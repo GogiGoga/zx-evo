@@ -7,7 +7,6 @@
 #include "sdcard.h"
 #include "zc.h"
 #include "resource.h"
-#include "ft812.h"
 
 extern VCTR vid;
 
@@ -940,8 +939,9 @@ void ts_line_int(bool vdos)
     comp.ts.intctrl.line_t += VID_TACTS;
     bool pre_pend;
 
-    if (comp.ts.vdac2 && comp.ts.ft_en)
-      pre_pend = vdac2::process_line();
+	if (comp.ts.vdac2 && comp.ts.ft_en)
+	{
+	}
     else
       pre_pend = true;
 

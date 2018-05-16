@@ -19,7 +19,6 @@
 #include "util.h"
 #include "getopt.h"
 #include "debug.h"
-#include "ft812.h"
 
 void cpu_info()
 {
@@ -114,12 +113,7 @@ void init_all(int argc, char **argv)
 
    if (comp.ts.vdac2)
    {
-     if (!vdac2::open_ft8xx())
-     {
-       color(CONSCLR_WARNING);
-       printf("warning: ft8xx library was not loaded\n");
-       comp.ts.vdac2 = false;
-     }
+
    }
    
    load_errors = 0;
@@ -171,7 +165,6 @@ void __declspec(noreturn) exit()
 //   timeEndPeriod(1);
    if (ay[1].Chip2203) YM2203Shutdown(ay[1].Chip2203); //Dexus
    if (ay[0].Chip2203) YM2203Shutdown(ay[0].Chip2203); //Dexus
-   if (comp.ts.vdac2) vdac2::close_ft8xx();
 
    color();
    printf("\nsee you later!\n");

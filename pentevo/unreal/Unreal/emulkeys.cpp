@@ -1,11 +1,12 @@
 #include "std.h"
 #include "resource.h"
 #include "emul.h"
+#include "sysdefs.h"
 #include "vars.h"
 #include "config.h"
 #include "draw.h"
 #include "dx.h"
-#include "debug.h"
+#include "debugger/debug.h"
 #include "memory.h"
 #include "sound.h"
 #include "savesnd.h"
@@ -43,7 +44,7 @@ void main_pause()
 
 void main_debug()
 {
-   Z80 &cpu = CpuMgr.Cpu();
+   Z80 &cpu = t_cpu_mgr::get_cpu();
 
    cpu.dbgchk = 1;
    cpu.dbgbreak = 1;
@@ -159,7 +160,7 @@ INT_PTR CALLBACK filterdlg(HWND dlg, UINT msg, WPARAM wp, LPARAM lp)
       HWND box = GetDlgItem(dlg, IDC_LISTBOX); int i;
 
       if (lp) {
-         for (i = 0; drivers[i].name; i++)
+         for (i = 0; i < countof(drivers); i++)
             SendMessage(box, LB_ADDSTRING, 0, (LPARAM)drivers[i].name);
          SendMessage(box, LB_SETCURSEL, conf.driver, 0);
          SetWindowText(dlg, "Select driver for rendering");

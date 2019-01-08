@@ -2,8 +2,8 @@
 #include "emul.h"
 #include "vars.h"
 #include "memory.h"
-#include "debug.h"
-#include "dbglabls.h"
+#include "debugger/debug.h"
+#include "debugger/dbglabls.h"
 #include "draw.h"
 #include "dx.h"
 #include "fontatm2.h"
@@ -445,7 +445,7 @@ void load_config(const char *fname)
 
    GetPrivateProfileString(video, "driver", nil, line, sizeof line, ininame);
 //   conf.driver = DRIVER_DDRAW;
-   for (i = 0; drivers[i].nick; i++)
+   for (i = 0; i < countof(drivers); i++)
       if (!strnicmp(line, drivers[i].nick, strlen(drivers[i].nick)))
          conf.driver = i;
 
@@ -1020,9 +1020,9 @@ void apply_memory()
    temp.rom_mask = (romsize-1) >> 4;
    set_banks();
 
-   for (unsigned i = 0; i < CpuMgr.GetCount(); i++)
+   for (unsigned i = 0; i < t_cpu_mgr::get_count(); i++)
    {
-       Z80 &cpu = CpuMgr.Cpu(i);
+       Z80 &cpu = t_cpu_mgr::get_cpu(i);
        cpu.dbgchk = isbrk(cpu);
    }
 }

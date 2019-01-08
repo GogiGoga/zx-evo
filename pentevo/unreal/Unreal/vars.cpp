@@ -2,7 +2,7 @@
 #include "emul.h"
 #include "defs.h"
 #include "vars.h"
-#include "debug.h"
+#include "debugger/debug.h"
 #include "memory.h"
 #include "gsz80.h"
 #include "z80.h"
@@ -22,7 +22,7 @@ char pressedit = 0; //Alone Coder
 void wmdbg(u32 addr, u8 val);
 u8 rmdbg(u32 addr);
 u8 *MemDbg(u32 addr);
-void __cdecl BankNames(int i, char *Name);
+void __cdecl BankNames(int i, char *name);
 namespace z80dbg
 {
 void Z80FAST step();
@@ -178,15 +178,15 @@ TGsZ80 gscpu(1, z80gs::BankNames, z80gs::step, z80gs::delta,
     z80gs::SetLastT, z80gs::membits, &z80gs::FastMemIf, &z80gs::DbgMemIf);
 #endif
 
-TCpuMgr CpuMgr;
+t_cpu_mgr cpu_mgr;
 
-void TCpuMgr::SwitchCpu()
+void t_cpu_mgr::switch_cpu()
 {
-    CurrentCpu++;
-    CurrentCpu %= Count;
+    current_cpu_++;
+    current_cpu_ %= Count;
 }
 
-Z80 *TCpuMgr::Cpus[] =
+Z80 *t_cpu_mgr::cpus_[] =
 {
   &cpu,
 #ifdef MOD_GSZ80
@@ -195,9 +195,9 @@ Z80 *TCpuMgr::Cpus[] =
 };
 
 
-const unsigned TCpuMgr::Count = _countof(Cpus);
-TZ80State TCpuMgr::PrevCpus[TCpuMgr::Count];
-unsigned TCpuMgr::CurrentCpu = 0;
+const unsigned t_cpu_mgr::Count = _countof(cpus_);
+TZ80State t_cpu_mgr::prev_cpus_[t_cpu_mgr::Count];
+unsigned t_cpu_mgr::current_cpu_ = 0;
 
 #ifdef MOD_GSBASS
 GSHLE gs;
@@ -670,4 +670,4 @@ char presetbuf[0x4000], *setptr = presetbuf;
 #include "fontatm2.cpp"
 */
 
-const char * const ay_schemes[] = { "no soundchip", "single chip", "pseudo-turbo", "quadro-AY", "turbo-AY // POS", "turbo-sound // NedoPC" };
+const char * const ay_schemes[] = { "no soundchip", "single chip", "pseudo-turbo", "quadro-AY", "turbo-AY // POS", "turbo-sound // NedoPC", "AYX-32" };

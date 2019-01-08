@@ -18,7 +18,7 @@
 #include "debugger/dbglabls.h"
 #include "util.h"
 #include "getopt.h"
-#include "debug.h"
+// #include "debug.h"
 
 void cpu_info()
 {
